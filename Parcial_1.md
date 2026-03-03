@@ -12,5 +12,6 @@ la diferencia fundamental entre la latencia y el jitter ¿Cuál de estas dos mé
 - el Jitter es el orden en que llega el mensaje, el mensaje llega con fluctuaciones en diferentes tiempos, lo que causa en una llamada de Voz IP se escucharía a la persona distorsionada o robotizada debido a que el sistema no reconoce la alteración del tiempo.
 
 #### B:
-Una aplicación envía datos usando protocolo TCP, mientras que otra usa UDP para la misma tarea de transmisión de video ¿Cuál es más eficiente en términos de throughput y cuál ofrece mayor control de la pérdida de paquetes? Justifique s u respuesta basándote en la " de sus cabeceras
+Una aplicación envía datos usando protocolo TCP, mientras que otra usa UDP para la misma tarea de transmisión de video ¿Cuál es más eficiente en términos de throughput y cuál ofrece mayor control de la pérdida de paquetes? Justifique s u respuesta basándote en la " de sus cabeceras "
+
 El protocolo TCP se enfoca en la calidad del mensaje debido a que tiene un mayor enfoque en él envió de los paquetes se envían a través del mensaje lo que brinda una mayor fiabilidad en el mensaje, el protocolo UDP tiene como prioridad la velocidad de la entrega mensaje ya que para el es más importante el tiempo que la calidad, para el throughput el mas eficiente seria el TCP porque este protocolo se enfoca en validad la cantidad útil de los datos que llega en el mensaje, como premisa de esto la fiabilidad es lo mas importante.
