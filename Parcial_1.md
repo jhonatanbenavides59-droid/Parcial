@@ -119,6 +119,14 @@ Se debe realizar la instalación de unas herramientas Net-SNMP que complemente e
 -	ifOperStatus: Si la interfaz está activa (up) o caída (down).
 -	ifInOctets / ifOutOctets: El contador de tráfico (bytes que entran y salen), ideal para medir el consumo de ancho de banda.
 
+#### D:
+Si el router envía un mensaje authenticationFailure trap
+al gestor SNMP, ¿Qué evento lo ha provocado y cuál es la
+ventaja de recibir un Trap en lugar de estar consultando
+constantemente polling )el estado del router
+Cuarto Punto
+
+Si se recibe un mensaje authenticationFailure trap es un evento provocado por un intento de acceso no autorizado al router. específicamente, ocurre cuando alguien (o algún software) intenta realizar una consulta SNMP, con credenciales que no están autorizadas, la ventaja que tiene el trap sobre el polling, es su fiabilidad y rapidez de detención debido a que e trap se enfoca en la falla enviando información de manera oportuna lo que evita congestiones en la red para que se pueda prestar la atención necesaria a tiempo.
 
 
 
