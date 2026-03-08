@@ -146,11 +146,16 @@ está verificando este comando y qué protocolo utiliza
 
 A:
 
-Para validar si mi equipo tiene conectividad a Github.com usaría 3 comandos para recopilar la mayor cantidad de datos, el primero sería el PING que usa el protocolo ICMP se vería que el ping envia y recibe 4 paquetes sin perdidas, si revisamos el modelo OSI se ubica en la capa 3 (capa de red) su función principal es comprobar que un paquete puede ser enrutado desde la dirección IP de origen hasta la dirección IP de destino a través de diferentes redes y routers
+Para validar si mi equipo tiene conectividad a Github.com usaría 3 comandos para recopilar la mayor cantidad de datos, el primero sería el PING que usa el protocolo ICMP se valida que el ping envia y recibe 4 paquetes sin perdidas, si revisamos el modelo OSI se ubica en la capa 3 (capa de red) su función principal es comprobar que un paquete puede ser enrutado desde la dirección IP de origen hasta la dirección IP de destino a través de diferentes redes y routers
 
 Si desglosamos el ping logramos observar que Los servidores de GitHub suelen utilizar sistemas operativos basados en Linux, los cuales inician sus paquetes con un TTL de 64, el paquete salió con 64 y llegó a tu equipo con 52, significa que el paquete atravesó exactamente 12 routers desde los servidores de GitHub hasta tu ubicación en Colombia, podemos, otra parte seria el tiempo de respuesta de  87ms - 986s (Latencia) es decir, lo que tarda el paquete en ir hasta el servidor y regresar a tu PC que se pueden tomar como un tiempo aceptable para la conexión.
 
-
 <img width="363" height="176" alt="Ping Github" src="https://github.com/user-attachments/assets/19f8933c-844b-4d47-bdb1-e0cffeb8ffea" />
+
+El siguiente comando que se podria usar es el tracert este comando se puede usar para una verificación de conectividad más profunda, su función es identificar cada uno de los nodos (routers) que procesan el paquete basándose en sus direcciones IP, nos brinda el punto exacto de la red si se está produciendo un fallo o un cuello de botella, al igual que el ping usa el protocolo ICMP 
+
+<img width="534" height="269" alt="Tracert github" src="https://github.com/user-attachments/assets/6c5a1095-788a-4cb6-ad8b-b6fe6cd7f0aa" />
+
+
 
 
