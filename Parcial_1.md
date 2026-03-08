@@ -89,9 +89,12 @@ La IP origen en IPV4 es 192.168.1.10 el cambio que tendría a usar IPV6 seria 20
 ### Punto tres: 
 
 Desde
+#### A: 
 la CMD de Windows, ejecutar el comando Pathping 8.8.8.8. Explicar qué información proporciona este comando quedaría un ping o un tracert.
 
 Al ejecutar pathping 8.8.8.8 se utiliza una herramienta híbrida que combina lo mejor de ping y tracert, con una capacidad de diagnóstico, el ping solo te dice si un destino está vivo y cuánto tarda en responder, el tracert muestra la ruta (los routers) que sigue el paquete hasta llegar al destino.
+
+#### B: 
 
 Describir
 el proceso que sigue pathping para obtener sus
@@ -100,6 +103,21 @@ resultados
 <img width="380" height="432" alt="traza pathping" src="https://github.com/user-attachments/assets/63638a95-04bc-40ec-b7c6-f62c8cb83ecd" />
 
 La función del pathping es primero hace un rastro de la ruta (como tracert) y luego se queda analizando cada salto durante un periodo de tiempo (normalmente 250 segundos) para medir la pérdida de paquetes detallada, se pueden interpretar dos 3 cosas con el detalla de la tabla primera pérdida de paquetes por salto, validando que porcentaje e perdida se tuvo en cada salto, análisis de congestión envía paquetes por un tiempo para validar si el router está saturado y la latencia que se tenga por nodo, de igual manera podemos ver la latencia media por nodo muestra una visión más estable de la calidad de la conexión en cada punto del trayecto. 
+
+#### C: 
+
+¿Qué
+comando de Windows (o herramienta de línea de
+comandos) podría utilizar para " por el árbol MIB y
+obtener todos los valores de la interfaz del router en la
+IP 192 168 1 1
+
+Se debe realizar la instalación de unas herramientas Net-SNMP que complemente el Windows para poder usar el comando snmpwalk -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2 que nos dará la siguiente información:
+-	ifIndex: El número de identificación de cada puerto.
+-	ifDescr: El nombre de la interfaz (ej. GigabitEthernet0/1).
+-	ifType: El tipo de conexión (Ethernet, loopback, etc.).
+-	ifOperStatus: Si la interfaz está activa (up) o caída (down).
+-	ifInOctets / ifOutOctets: El contador de tráfico (bytes que entran y salen), ideal para medir el consumo de ancho de banda.
 
 
 
