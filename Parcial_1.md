@@ -38,3 +38,13 @@ SNMPv2c (Seguridad basada en comunidad): Utiliza una cadena de texto plano llama
 
 SNMPv3 (User-based Security Model - USM): Introduce conceptos de criptografía real. Permite definir usuarios y ofrece tres niveles de seguridad,noAuthNoPriv: Sin autenticación ni cifrado (similar a v2c), authNoPriv: Autenticación mediante hashing (MD5 o SHA) para asegurar que el remitente es quien dice ser,authPriv: El nivel más alto; además de autenticar, cifra los datos (DES, AES) para que nadie pueda leer el contenido del mensaje, aunque capture la trama.
 
+#### E:
+Define
+qué es un OID y cuál es su relación con la MIB Si
+un administrador quiere saber la cantidad de bytes que ha
+recibido una interfaz de red, ¿qué operación SNMP Get
+Set, Trap debe utilizar y por qué no sería adecuado usar
+un Trap para esto?
+
+El OID es la dirección específica de un dato dentro de ese árbol MIB. Es una cadena de números separados por puntos que identifica de forma única una característica su relación con la MIB es el mapa o la estructura jerárquica, mientras que el OID es la coordenada exacta para encontrar un dato específico dentro de ese mapa. Sin la MIB, los números del OID no tendrían significado; sin el OID, no podrías extraer información de la MIB.
+
