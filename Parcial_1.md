@@ -146,7 +146,7 @@ está verificando este comando y qué protocolo utiliza
 
 A:
 
-Para validar si mi equipo tiene conectividad a Github.com usaría 3 comandos para recopilar la mayor cantidad de datos, el primero sería el PING que usa el protocolo ICMP se vería que el ping envia y recibe 4 paquetes sin perdidas.
+Para validar si mi equipo tiene conectividad a Github.com usaría 3 comandos para recopilar la mayor cantidad de datos, el primero sería el PING que usa el protocolo ICMP se vería que el ping envia y recibe 4 paquetes sin perdidas, si revisamos el modelo OSI se ubica en la capa 3 (capa de red) su función principal es comprobar que un paquete puede ser enrutado desde la dirección IP de origen hasta la dirección IP de destino a través de diferentes redes y routers
 
 Si desglosamos el ping logramos observar que Los servidores de GitHub suelen utilizar sistemas operativos basados en Linux, los cuales inician sus paquetes con un TTL de 64, el paquete salió con 64 y llegó a tu equipo con 52, significa que el paquete atravesó exactamente 12 routers desde los servidores de GitHub hasta tu ubicación en Colombia, podemos, otra parte seria el tiempo de respuesta de  87ms - 986s (Latencia) es decir, lo que tarda el paquete en ir hasta el servidor y regresar a tu PC que se pueden tomar como un tiempo aceptable para la conexión.
 
