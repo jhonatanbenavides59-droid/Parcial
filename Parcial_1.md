@@ -78,4 +78,21 @@ La función del PSH (Empujar): Instruye al receptor a pasar los datos directamen
 
 El Servicio del puerto 80 es el estándar mundial para el protocolo HTTP (Hypertext Transfer Protocol), funciona como la "puerta de entrada" específica a un servicio dentro de un servidor que tiene una sola dirección IP, esto indica que el cliente (192.168.1.10) está intentando acceder a un servidor web para solicitar una página que no tiene cifrado (tráfico en texto plano).
 
+#### D:
+Si
+este mismo paquete se enviara usando IPv 6 ¿qué cabecera de
+IPv 6 reemplazaría a la cabecera IPv 4 mostrada y cuál sería una
+mejora notable en su procesamiento por parte de los routers
+
+La IP origen en IPV4 es 192.168.1.10 el cambio que tendría a usar IPV6 seria 2001:db8::1 pasa de 32 bits a 128 bits, la mejora más significativa es la simplificación del procesamiento en el hardware de red como lo son eliminación del Checksum (suma de verificación), eliminación de la fragmentación en el Router, cabecera de tamaño Fijo y alineada.
+
+### Punto tres: 
+
+Desde
+la CMD de Windows, ejecutar el comando Pathping 8.8.8.8 
+Explicar qué información proporciona este comando quedaría un ping o un tracert.
+
+Al ejecutar pathping 8.8.8.8 se utiliza una herramienta híbrida que combina lo mejor de ping y tracert, con una capacidad de diagnóstico, el ping solo te dice si un destino está vivo y cuánto tarda en responder, el tracert muestra la ruta (los routers) que sigue el paquete hasta llegar al destino.
+La función del pathping es primero hace un rastro de la ruta (como tracert) y luego se queda analizando cada salto durante un periodo de tiempo (normalmente 250 segundos) para medir la pérdida de paquetes detallada, se pueden interpretar dos 3 cosas con el detalla de la tabla primera pérdida de paquetes por salto, validando que porcentaje e perdida se tuvo en cada salto, análisis de congestión envía paquetes por un tiempo para validar si el router está saturado y la latencia que se tenga por nodo, de igual manera podemos ver la latencia media por nodo muestra una visión más estable de la calidad de la conexión en cada punto del trayecto. 
+
 
