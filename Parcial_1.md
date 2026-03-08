@@ -55,5 +55,9 @@ Identificar
 y explicar cada uno de los campos de la
 cabecera Ethernet ¿Qué significa el valor 0 x 0800 en el campo "tipo"
 
+
+<img width="367" height="160" alt="IPv6" src="https://github.com/user-attachments/assets/2acd5fc8-a1fa-46d6-bc9f-b4a419e00d88" />
+
 Para el caso mencionado es se debe usar SNMP Get debido a que el administrador tiene un rol activo. Él es quien necesita la información en un momento específico a diferencia del Trap es una notificación no solicitada que el dispositivo envía al administrador cuando ocurre un evento crítico 
+
 Cuando la tarjeta de red recibe la trama y lee 0x0800, recibe la trama y verifica que la dirección de destino es correcta, sabe que debe entregar el contenido al software que maneja las direcciones IP, de forma más sencilla de verse si el valor es 0x0800 el receptor busca direcciones IP 192.168.1.10, a diferencia de que si es valor fuera 0x86DD el receptor esperaría una dirección de 128 bits de IPv6 o en un caso de que el valor fuera 0x0806 el receptor sabría que es un paquete ARP.
