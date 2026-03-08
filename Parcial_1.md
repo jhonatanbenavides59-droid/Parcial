@@ -128,5 +128,23 @@ Cuarto Punto
 
 Si se recibe un mensaje authenticationFailure trap es un evento provocado por un intento de acceso no autorizado al router. específicamente, ocurre cuando alguien (o algún software) intenta realizar una consulta SNMP, con credenciales que no están autorizadas, la ventaja que tiene el trap sobre el polling, es su fiabilidad y rapidez de detención debido a que e trap se enfoca en la falla enviando información de manera oportuna lo que evita congestiones en la red para que se pueda prestar la atención necesaria a tiempo.
 
+#### Punto 4
+
+Realizar
+un análisis paso a paso del proceso completo,
+desde que se escribe el primer comando de verificación
+hasta que GitHub confirma la recepción de los cambios
+Para cada paso, usted deberá
+
+### A:
+
+¿Qué
+comando usaría para verificar que su equipo tiene
+conectividad IP con los servidores de GitHub? Ejecutar ese
+comando y obtiener respuesta Explicar qué capa del modelo OSI
+está verificando este comando y qué protocolo utiliza
+
+
+
 
 
