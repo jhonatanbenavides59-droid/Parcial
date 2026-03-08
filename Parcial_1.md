@@ -61,3 +61,21 @@ cabecera Ethernet ¿Qué significa el valor 0 x 0800 en el campo "tipo"
 Para el caso mencionado es se debe usar SNMP Get debido a que el administrador tiene un rol activo. Él es quien necesita la información en un momento específico a diferencia del Trap es una notificación no solicitada que el dispositivo envía al administrador cuando ocurre un evento crítico 
 
 Cuando la tarjeta de red recibe la trama y lee 0x0800, recibe la trama y verifica que la dirección de destino es correcta, sabe que debe entregar el contenido al software que maneja las direcciones IP, de forma más sencilla de verse si el valor es 0x0800 el receptor busca direcciones IP 192.168.1.10, a diferencia de que si es valor fuera 0x86DD el receptor esperaría una dirección de 128 bits de IPv6 o en un caso de que el valor fuera 0x0806 el receptor sabría que es un paquete ARP.
+
+#### B: 
+En
+la cabecera IPv 4 ¿qué significan los campos Protocolo y
+TTL? ¿Por qué es importante el TTL en red?
+
+En este caso se identifica un valor de TCP (como en tu captura, para tráfico web HTTP), este campo indica cuál es el protocolo de la Capa de Transporte (Capa 4) que viene encapsulado dentro del paquete IP.
+El protocolo TTL es un contador que indica cuántos routers puede atravesar el paquete antes de ser descartado, funciona cada vez que el paquete pasa por un router, este le resta 1 al valor del TTL. Si el valor llega a 0, el router descarta el paquete y envía un mensaje de error al emisor.
+El TTL es importante en la red ya que es un mecanismo de seguridad que evita que internet colapse algunas funciones son, evitar Bucles Infinitos (Routing Loops), diagnóstico de red, Identificación del Sistema Operativo.
+
+#### C: 
+
+La función del ACK (acuse de recibido) le confirma al emisor que los datos enviados anteriormente fueron recibidos correctamente.
+La función del PSH (Empujar): Instruye al receptor a pasar los datos directamente a la aplicación (en este caso, al servidor web) de forma inmediata.
+
+El Servicio del puerto 80 es el estándar mundial para el protocolo HTTP (Hypertext Transfer Protocol), funciona como la "puerta de entrada" específica a un servicio dentro de un servidor que tiene una sola dirección IP, esto indica que el cliente (192.168.1.10) está intentando acceder a un servidor web para solicitar una página que no tiene cifrado (tráfico en texto plano).
+
+
