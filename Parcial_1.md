@@ -48,3 +48,12 @@ un Trap para esto?
 
 El OID es la dirección específica de un dato dentro de ese árbol MIB. Es una cadena de números separados por puntos que identifica de forma única una característica su relación con la MIB es el mapa o la estructura jerárquica, mientras que el OID es la coordenada exacta para encontrar un dato específico dentro de ese mapa. Sin la MIB, los números del OID no tendrían significado; sin el OID, no podrías extraer información de la MIB.
 
+### Punto dos
+
+#### A:
+Identificar
+y explicar cada uno de los campos de la
+cabecera Ethernet ¿Qué significa el valor 0 x 0800 en el campo "tipo"
+
+Para el caso mencionado es se debe usar SNMP Get debido a que el administrador tiene un rol activo. Él es quien necesita la información en un momento específico a diferencia del Trap es una notificación no solicitada que el dispositivo envía al administrador cuando ocurre un evento crítico 
+Cuando la tarjeta de red recibe la trama y lee 0x0800, recibe la trama y verifica que la dirección de destino es correcta, sabe que debe entregar el contenido al software que maneja las direcciones IP, de forma más sencilla de verse si el valor es 0x0800 el receptor busca direcciones IP 192.168.1.10, a diferencia de que si es valor fuera 0x86DD el receptor esperaría una dirección de 128 bits de IPv6 o en un caso de que el valor fuera 0x0806 el receptor sabría que es un paquete ARP.
