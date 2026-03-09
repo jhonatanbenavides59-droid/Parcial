@@ -196,4 +196,9 @@ ACK (Acknowledgment): Finalmente, el equipo envía un paquete ACK de vuelta al s
 
 <img width="446" height="141" alt="git push origin main" src="https://github.com/user-attachments/assets/491719f5-fe9b-4899-a728-6cf6fe524419" />
 
+### A:
+Si se quisiera observar en tiempo real los segmentos TCP
+intercambiados, ¿qué herramienta usaría y qué filtro aplicarías para
+ver solo el tráfico hacia/desde GitHub? Asumir que ya conoces la IP
+de (GitHub)
 
