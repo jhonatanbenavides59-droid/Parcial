@@ -180,6 +180,8 @@ variable ¿Qué métrica de teletráfico está afectada (
 jitter throughput ¿Cómo podría esto influir en tu futura
 operación de git push?
 
+Para este caso la mayor afectación sería el Jitter debido a que representa la variabilidad en el tiempo de llegada de los paquetes. Si un ping tarda 80ms y el siguiente 150ms, tienes un jitter elevado, lo que indica inestabilidad en la ruta o congestión en los routers, como el git push utiliza el protocolo TCP (usualmente sobre el puerto 443 o 22) para garantizar que el código llegue íntegro, lo que causaría una latencia alta, lo que al momento de usar el cliente Git si supera los tiempos establecidos se podría obtener un código de error “Connection timed out”, otro efecto seria la velocidad en la subida de los archivos debido a que se usa el protocolo TCP, cada vez que un paquete tarda más de lo esperado (debido al jitter), el sistema reduce la "ventana de envío", haciendo que la transferencia de tus archivos sea mucho más lenta de lo normal.
+
 
 
 
