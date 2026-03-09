@@ -214,3 +214,7 @@ Sin TCP
 
 <img width="913" height="82" alt="ip addr" src="https://github.com/user-attachments/assets/064130c9-665d-4ce2-8aae-0e5345de9f16" />
 
+#### Puerto y protocolo usado: 
+
+<img width="521" height="60" alt="Puertos" src="https://github.com/user-attachments/assets/2ee2aaff-b30d-403d-8e5c-6fd965c94b24" />
+
