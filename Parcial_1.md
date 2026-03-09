@@ -170,5 +170,16 @@ comando usaría para diagnosticarlo manualmente?
 
 El protocolo encargado es el DNS (Domain Name System), funciona bajo las siguientes etapas, búsqueda en cache busca la IP en el archivo host, consulta al resolver envia una solicitud a los DNS locas del ISP, Jerarquía Mundial el servidor DNS realiza una búsqueda recursiva consultando a los servidores raíz, luego a los de nivel superior y finalmente a los servidores autoritativos de GitHub, en este caso el protocolo está ubicado en la capa de transporte (capa 4) que se enfoca en el uso del protocolo UDP con el puerto 53 por su rapidez en consultas cortas.
 
+Para validar de forma manual una posible falla se debe usar el comando nslookup (Name Server Lookup) es una herramienta de línea de comandos esencial para diagnosticar problemas DNS, verificar registros y mapear dominios a direcciones IP, funciona en Windows, Linux y macOS, permitiendo consultas interactivas o directas para obtener información detallada como registros A, MX, NS y CNAME, ideal para administradores.
+
+### C:
+
+Imagina
+que el ping es exitoso pero con una latencia alta y
+variable ¿Qué métrica de teletráfico está afectada (
+jitter throughput ¿Cómo podría esto influir en tu futura
+operación de git push?
+
+
 
 
