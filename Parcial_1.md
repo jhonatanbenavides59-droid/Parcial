@@ -186,9 +186,11 @@ Si se usa la herramienta con más frecuencia para aprovechar el sistema de versi
 El protocolo que se usa para este caso es el HTTPS, debido a que Git empaqueta los cambios de archivos (objetos, commits y deltas), al usar HTTPS, Git envuelve estos datos en solicitudes POST de HTTP (método utilizado por navegadores web para enviar datos a un servidor, generalmente para crear un nuevo recurso, enviar formularios, o actualizar información en una base de datos), adicional a esto se usa la autenticación Git utiliza las credenciales (como un Token de Acceso Personal) para validar la identidad con GitHub, en relación al modelo de OSI las capas que interactúan son las capa 7, 4 y 3.
 
 GitHub utiliza el puerto 443 para HTTPS que tiene un método llamado Three-Way Handshake, el proceso consta de tres pasos fundamentales entre el equipo (cliente) y el servidor de GitHub:
+
 SYN (Synchronize): el equipo envía un paquete con la bandera SYN activa al servidor. Con esto, le indica al servidor que desea iniciar una comunicación y sincronizar los números de secuencia para la sesión.
 
 SYN-ACK (Synchronize-Acknowledgment): El servidor recibe la solicitud y responde con un paquete que tiene las banderas SYN y ACK activas. Esto significa que el servidor reconoce la petición del equipo y también desea sincronizar sus propios números de secuencia.
+
 ACK (Acknowledgment): Finalmente, el equipo envía un paquete ACK de vuelta al servidor para confirmar que recibió la respuesta. En este punto, la conexión queda oficialmente establecida y ambos dispositivos están listos para transferir los datos del git push.
 
 
