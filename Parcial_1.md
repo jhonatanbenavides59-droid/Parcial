@@ -168,5 +168,7 @@ Describir el proceso y el protocolo involucrado ¿Qué capa del
 OSI pertenece este protocolo? Si la resolución fallara, ¿qué
 comando usaría para diagnosticarlo manualmente?
 
+El protocolo encargado es el DNS (Domain Name System), funciona bajo las siguientes etapas, búsqueda en cache busca la IP en el archivo host, consulta al resolver envia una solicitud a los DNS locas del ISP, Jerarquía Mundial el servidor DNS realiza una búsqueda recursiva consultando a los servidores raíz, luego a los de nivel superior y finalmente a los servidores autoritativos de GitHub, en este caso el protocolo está ubicado en la capa de transporte (capa 4) que se enfoca en el uso del protocolo UDP con el puerto 53 por su rapidez en consultas cortas.
+
 
 
