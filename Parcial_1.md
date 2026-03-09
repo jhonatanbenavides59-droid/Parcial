@@ -144,8 +144,6 @@ conectividad IP con los servidores de GitHub? Ejecutar ese
 comando y obtiener respuesta Explicar qué capa del modelo OSI
 está verificando este comando y qué protocolo utiliza
 
-A:
-
 Para validar si mi equipo tiene conectividad a Github.com usaría 2 comandos para recopilar la mayor cantidad de datos, el primero sería el PING que usa el protocolo ICMP se valida que el ping envia y recibe 4 paquetes sin perdidas, si revisamos en el modelo OSI se ubica en la capa 3 (capa de red) su función principal es comprobar que un paquete puede ser enrutado desde la dirección IP de origen hasta la dirección IP de destino a través de diferentes redes y routers
 
 Si desglosamos el ping logramos observar que Los servidores de GitHub suelen utilizar sistemas operativos basados en Linux, los cuales inician sus paquetes con un TTL de 64, el paquete salió con 64 y llegó a tu equipo con 52, significa que el paquete atravesó exactamente 12 routers desde los servidores de GitHub hasta tu ubicación en Colombia, podemos, otra parte seria el tiempo de respuesta de  87ms - 986s (Latencia) es decir, lo que tarda el paquete en ir hasta el servidor y regresar a tu PC que se pueden tomar como un tiempo aceptable para la conexión.
@@ -153,7 +151,6 @@ Si desglosamos el ping logramos observar que Los servidores de GitHub suelen uti
 <img width="363" height="176" alt="Ping Github" src="https://github.com/user-attachments/assets/19f8933c-844b-4d47-bdb1-e0cffeb8ffea" />
 
 El siguiente comando que se podria usar es el tracert este comando se puede usar para una verificación de conectividad más profunda, su función es identificar cada uno de los nodos (routers) que procesan el paquete basándose en sus direcciones IP, nos brinda el punto exacto de la red si se está produciendo un fallo o un cuello de botella, al igual que el ping usa el protocolo ICMP, si revisamos en el modelo OSI se ubica en la capa 3 (capa de red).
-
 
 
 <img width="534" height="269" alt="Tracert github" src="https://github.com/user-attachments/assets/6c5a1095-788a-4cb6-ad8b-b6fe6cd7f0aa" />
@@ -180,8 +177,17 @@ variable ¿Qué métrica de teletráfico está afectada (
 jitter throughput ¿Cómo podría esto influir en tu futura
 operación de git push?
 
-Para este caso la mayor afectación sería el Jitter debido a que representa la variabilidad en el tiempo de llegada de los paquetes. Si un ping tarda 80ms y el siguiente 150ms, tienes un jitter elevado, lo que indica inestabilidad en la ruta o congestión en los routers, como el git push utiliza el protocolo TCP (usualmente sobre el puerto 443 o 22) para garantizar que el código llegue íntegro, lo que causaría una latencia alta, lo que al momento de usar el cliente Git si supera los tiempos establecidos se podría obtener un código de error “Connection timed out”, otro efecto seria la velocidad en la subida de los archivos debido a que se usa el protocolo TCP, cada vez que un paquete tarda más de lo esperado (debido al jitter), el sistema reduce la "ventana de envío", haciendo que la transferencia de tus archivos sea mucho más lenta de lo normal.
+Para este caso la mayor afectación sería el Jitter debido a que representa la variabilidad en el tiempo de llegada de los paquetes. Si un ping tarda 80ms y el siguiente 150ms, tienes un jitter elevado, lo que indica inestabilidad en la ruta o congestión en los routers, como el git push utiliza el protocolo TCP (usualmente sobre el puerto 443 o 22) para garantizar que el código llegue íntegro, lo que causaría una latencia alta, lo que al momento de usar el cliente Git si supera los tiempos establecidos se podría obtener un código de error “Connection timed out”, otro efecto seria la velocidad en la subida de los archivos debido a que se usa el protocolo TCP, cada vez que un paquete tarda más de lo esperado (debido al jitter), el sistema reduce la "ventana de envío", haciendo que la transferencia de tus archivos sea mucho más lenta de lo normal
 
+Si se usa la herramienta con más frecuencia para aprovechar el sistema de versionamiento se podrían tener falla en el guardado debido a que si se trabaja de manera activa en un archivo con gran cantidad de información como páginas web o desarrollos más en específico se pueden tener inconsistencias en las versiones causando retrasos.
+
+### Paso dos 
+
+El protocolo que se usa para este caso es el HTTPS, debido a que Git empaqueta los cambios de archivos (objetos, commits y deltas), al usar HTTPS, Git envuelve estos datos en solicitudes POST de HTTP (método utilizado por navegadores web para enviar datos a un servidor, generalmente para crear un nuevo recurso, enviar formularios, o actualizar información en una base de datos), adicional a esto se usa la autenticación Git utiliza las credenciales (como un Token de Acceso Personal) para validar la identidad con GitHub, en relación al modelo de OSI las capas que interactúan son las capa 7, 4 y 3.
+GitHub utiliza el puerto 443 para HTTPS que tiene un método llamado Three-Way Handshake, el proceso consta de tres pasos fundamentales entre el equipo (cliente) y el servidor de GitHub:
+SYN (Synchronize): el equipo envía un paquete con la bandera SYN activa al servidor. Con esto, le indica al servidor que desea iniciar una comunicación y sincronizar los números de secuencia para la sesión.
+SYN-ACK (Synchronize-Acknowledgment): El servidor recibe la solicitud y responde con un paquete que tiene las banderas SYN y ACK activas. Esto significa que el servidor reconoce la petición del equipo y también desea sincronizar sus propios números de secuencia.
+ACK (Acknowledgment): Finalmente, el equipo envía un paquete ACK de vuelta al servidor para confirmar que recibió la respuesta. En este punto, la conexión queda oficialmente establecida y ambos dispositivos están listos para transferir los datos del git push.
 
 
 
