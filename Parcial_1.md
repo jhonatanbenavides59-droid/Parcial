@@ -244,3 +244,27 @@ la cabecera IP, ¿qué campo evita que el paquete dé vueltas
 indefinidamente por la red? Explicar su funcionamiento
 
 Quien evitaría que de vueltas infinitas entre los routers es el TTL, que tiene como función principal realizar chequeos a los paquetes enviaos revisando, valor Inicial es la etiqueta que le agrega el emisor al paquete, decremento en cada salto cada vez que el paquete llega a un router ese router resta 1 al valor del campo TTL antes de enviarlo al siguiente nodo, eliminación del paquete si el valor del TTL llega a 0 antes de alcanzar su destino, el router que tiene el paquete en ese momento lo descarta inmediatamente, notificación de error el router que descarta el paquete envía un mensaje de vuelta utilizando el protocolo ICMP con el error "Time Exceeded"
+
+
+¿Qué
+tipo de mensaje TCP utiliza GitHub para confirmar la recepción
+correcta de los datos? ¿Cómo se relaciona esto con el concepto de
+"pérdida de paquetes" y "fiabilidad"
+
+GitHub utiliza un mensaje de tipo ACK este mensaje es fundamental para la fiabilidad de la conexión, cada vez que GitHub recibe un segmento de datos git push, envía de vuelta un paquete con la bandera ACK activada para indicar que la información llegó íntegra, el paquete contiene un número específico que le dice a tu PC cuál es el siguiente byte de información que el servidor espera recibir.
+
+Esto tiene gran inferencia con la perdida de paquetes y fiabilidad ya que como se menciona el ACK es una forma de asegurarse que los datos tengan un orden y sea la mejor manera de enviar y recibir datos, entre mejor sea la transmisión del dato el mensaje llegara más rápido y asegurando que los datos tienen la integridad completa. 
+
+Una
+vez que el push ha terminado, la conexión se cierra Mencionar cómo
+se realiza este cierre ordenado en TCP
+
+El cierre de una conexión TCP, sigue un proceso ordenado conocido como Cierre de Cuatro Vías (Four-Way Handshake), los cuatro pasos son: 
+
+- FIN (Finalize) del Cliente: al detectar que Git ya no tiene más datos que subir, envía un segmento TCP con la bandera FIN activa. Esto le indica a GitHub: "He terminado de enviar mi código, quiero cerrar la conexión".
+  
+- ACK (Acknowledgment) del Servidor: GitHub recibe el FIN y responde con un ACK. En este punto, la conexión queda en un estado de "semi-cerrada"; ya no envía más datos, pero GitHub todavía podría enviarte una confirmación final si fuera necesario.
+  
+- FIN del Servidor: Una vez que GitHub procesa la subida y confirma que no tiene más información que enviar, genera su propio segmento con la bandera FIN.
+  
+- ACK final del Cliente recibe el FIN de GitHub y responde con el último ACK. Tras un breve tiempo de espera (para asegurar que este último mensaje llegó correctamente), la conexión se libera por completo de la memoria de ambos sistemas.
