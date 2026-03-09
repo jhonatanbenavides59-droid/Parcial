@@ -202,3 +202,15 @@ intercambiados, ¿qué herramienta usaría y qué filtro aplicarías para
 ver solo el tráfico hacia/desde GitHub? Asumir que ya conoces la IP
 de (GitHub)
 
+En este caso se usa la aplicación llamada Wireshark que permite realizar la captura de datos de entregada y salida que tiene una interfaz física y permite realizar el filtrado de los protocolos o puertos que se usa en la comunicación, para este ejercicio se usa la tarjeta red WIFI.
+
+Se usaran algunos filtros para entender el trafico entre el equipo usado y Github.com, en los ejercicios anteriores se identificó que la IP de Github es la 140.82.112.3, teniendo como base la IP, el primer filtro a usar es ip.addr ==140.82.112.3, este parámetro le dice a Wireshark que solo muestre paquetes donde la dirección IP de origen o la de destino, el siguiente filtro seria ip.addr == 140.82.112.4 && tcp, indica que el paquete debe cumplir ambas condiciones simultáneamente para aparecer en la lista, esto es fundamental para analizar operaciones como git push, ya que te permite ver el Three-Way Handshake (SYN, SYN-ACK, ACK) y el flujo de segmentos de datos sin ver las consultas DNS previas o tráfico de otras capas.
+
+Con TCP
+
+<img width="930" height="208" alt="ip addr_TCP" src="https://github.com/user-attachments/assets/aef98d6a-8063-45f9-bc1f-8d11083ae189" />
+
+Sin TCP
+
+<img width="913" height="82" alt="ip addr" src="https://github.com/user-attachments/assets/064130c9-665d-4ce2-8aae-0e5345de9f16" />
+
