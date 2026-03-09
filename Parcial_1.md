@@ -268,3 +268,13 @@ El cierre de una conexión TCP, sigue un proceso ordenado conocido como Cierre d
 - FIN del Servidor: Una vez que GitHub procesa la subida y confirma que no tiene más información que enviar, genera su propio segmento con la bandera FIN.
   
 - ACK final del Cliente recibe el FIN de GitHub y responde con el último ACK. Tras un breve tiempo de espera (para asegurar que este último mensaje llegó correctamente), la conexión se libera por completo de la memoria de ambos sistemas.
+
+
+Si
+usted fuera administrador de la red y quisiera monitorear el
+tráfico generado por tu push usando SNMP, ¿qué métricas podrías
+observar en el agente SNMP del router de salida?salida?(Por ejemplo bytes
+transmitidos/recibidos, paquetes descartados, etc ¿Qué versión de
+SNMP usaría usted si necesita que estas consultas fueran cifradas?
+
+La versión que se usaría versión que debes utilizar es SNMPv3, Por qué a diferencia de las versiones v1 y v2c (que envían la "comunidad" o contraseña en texto plano), SNMPv3 introduce un modelo de seguridad basado en el usuario (USM) que ofrece, privacidad, autenticación, integridad, adicional se usaría una combinación de Wireshark y SNMPv3 para tener un panorama total de la red.
