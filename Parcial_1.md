@@ -227,3 +227,20 @@ transporte? ¿Y en la de red? ¿Y en la de enlace?
 
 Para este caso se pueden notar que interactúan 4 capas del modelo OSI, capa 7 de transporte donde el (PDU) llamadas datos/ mensajes (Datos de Git/HTTP), capa 4 de transporte segmento (puertos origen/destino TCP), capa 3 paquete (direcciones IP y TTL), capa 2 enlace (direcciones MAC) 
 
+El paquete IP viaja a través de múltiples routers hasta llegar a los
+servidores de GitHub Si uno de esos routers está congestionado y se
+empieza a descartar paquetes, ¿cómo se vería afectado el git push
+¿Qué mecanismo de TCP se activaría para mitigar esto? ¿Qué comando de
+red te permitiría identificar en qué salto se están perdiendo paquetes?
+
+Sobre el git push se tendrían los siguientes impactos ralentización en la barra de progreso de Git se detiene o avanza con mucha lentitud, riesgo de interrupción si la pérdida de paquetes es masiva, la conexión podría cerrarse inesperadamente, aumento de latencia al perderse segmentos, el tiempo total para completar la operación aumenta drásticamente debido a los tiempos de espera para las retransmisiones.
+
+En caso de que se presente la congestión el protocolo TCP usaría Retransmisión al no recibir el mensaje de confirmación (ACK) de GitHub, el protocolo asumirá que el paquete se perdió y lo enviará de nuevo, ventana de congestión el protocolo TCP reducirá automáticamente la cantidad de datos que envía por segundo, permitiendo que la red se recupere, Fast Retransmit: Si el emisor recibe tres ACKs duplicados de GitHub, entenderá que un paquete específico se perdió y lo retransmitirá antes de que expire el temporizador normal, agilizando la recuperación.
+
+El comando que me permite identificar la perdida de paquetes seria pathping github.com
+
+En
+la cabecera IP, ¿qué campo evita que el paquete dé vueltas
+indefinidamente por la red? Explicar su funcionamiento
+
+Quien evitaría que de vueltas infinitas entre los routers es el TTL, que tiene como función principal realizar chequeos a los paquetes enviaos revisando, valor Inicial es la etiqueta que le agrega el emisor al paquete, decremento en cada salto cada vez que el paquete llega a un router ese router resta 1 al valor del campo TTL antes de enviarlo al siguiente nodo, eliminación del paquete si el valor del TTL llega a 0 antes de alcanzar su destino, el router que tiene el paquete en ese momento lo descarta inmediatamente, notificación de error el router que descarta el paquete envía un mensaje de vuelta utilizando el protocolo ICMP con el error "Time Exceeded"
