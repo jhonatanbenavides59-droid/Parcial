@@ -160,8 +160,13 @@ El siguiente comando que se podria usar es el tracert este comando se puede usar
 
 De la información obtenida del comando se puede identificar, salto 1: (192.168.1.1) este es el router local, saltos 2 al 6: estos corresponden a la infraestructura interna del ISP, en el salto 9 (64.125.25.48) ocurre un salto internacional, la latencia sube drásticamente de 3 ms a 85 ms. El nombre del host indica que el paquete ha llegado EE. UU. (ae4.cr1.mia1.us.zip.zayo.com), un punto común de entrada para el tráfico desde Colombia, se logra identificar unos saltos del 7 al 17 que contienen *** lo que indica tiempo de espera para la solicitud, esto ocurre porque estos routers en específicos están configurados para ignorar o descartar paquetes ICMP, el salto 18 (140.82.112.3) es el destino final en GitHub, el paquete llega con una latencia estable de 85 ms.
 
+### B: 
 
-
+¿Cómo
+obtiene su equipo la dirección IP de github com?
+Describir el proceso y el protocolo involucrado ¿Qué capa del
+OSI pertenece este protocolo? Si la resolución fallara, ¿qué
+comando usaría para diagnosticarlo manualmente?
 
 
 
