@@ -218,4 +218,12 @@ Sin TCP
 
 <img width="521" height="60" alt="Puertos" src="https://github.com/user-attachments/assets/2ee2aaff-b30d-403d-8e5c-6fd965c94b24" />
 
+Describir
+el proceso de encapsulamiento desde que los datos salen de la
+aplicación Git hasta que se convierten en una trama Ethernet que sale
+por la tarjeta de red Mencionar las unidades de datos ( en cada
+capa ¿Qué nombre reciben en la capa de aplicación? ¿Y en la de
+transporte? ¿Y en la de red? ¿Y en la de enlace?
+
+Para este caso se pueden notar que interactúan 4 capas del modelo OSI, capa 7 de transporte donde el (PDU) llamadas datos/ mensajes (Datos de Git/HTTP), capa 4 de transporte segmento (puertos origen/destino TCP), capa 3 paquete (direcciones IP y TTL), capa 2 enlace (direcciones MAC) 
 
